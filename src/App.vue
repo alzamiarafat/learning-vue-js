@@ -76,6 +76,7 @@
 
     <h2>Full Name: {{ firstName }} {{ lastName }}</h2>
     <h3>Computed Full Name: {{ fullName }}</h3>
+    <button @click="changeFullName('Hasib Arafat')">changeFullName</button>
 
     <P>Total: {{ items.reduce((total,crnt) => ( total += crnt.price ), 0) }}</P>
     <button @click="items.push({id: 4, name: 'headphone', price: 50})">Add item</button>
@@ -176,11 +177,22 @@ export default {
     },
     submit(){
       console.log(this.formValues)
+    },
+    changeFullName(value){
+      this.fullName = value
     }
   },
   computed: {
-    fullName() {
-      return `${this.firstName} ${this.lastName}`
+    fullName: {
+      get(){
+        return `${this.firstName} ${this.lastName}`
+      },
+      set(value){
+        const name = value.split(' ')
+        this.firstName = name[0]
+        this.lastName = name[1]
+
+      }
     },
     total () {
       return this.items.reduce((total, crrnt) => (total += crrnt.price),0)
