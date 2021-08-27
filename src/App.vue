@@ -38,39 +38,50 @@
 <!--    <button @click="increment()">+</button>-->
 <!--    <button v-on:click="decrement()">-</button>-->
 
-    <h2>{{ formValues }}</h2>
 
-    <input type="number" v-model="formValues.text" placeholder="Click Here">
-    <p>Input Here: {{ formValues.text+10 }}</p>
+<!--form handling-->
+<!--    <h2>{{ formValues }}</h2>-->
 
-    <label>single selection</label>
-    <select v-model="formValues.singleValue">
-      <option value="red">red</option>
-      <option value="blue">blue</option>
-      <option value="green">green</option>
-    </select>
-    <h5>value {{ formValues.singleValue }}</h5>
+<!--    <input type="number" v-model="formValues.text" placeholder="Click Here">-->
+<!--    <p>Input Here: {{ formValues.text+10 }}</p>-->
+
+<!--    <label>single selection</label>-->
+<!--    <select v-model="formValues.singleValue">-->
+<!--      <option value="red">red</option>-->
+<!--      <option value="blue">blue</option>-->
+<!--      <option value="green">green</option>-->
+<!--    </select>-->
+<!--    <h5>value {{ formValues.singleValue }}</h5>-->
 
 
-    <label>single selection</label>
-    <select v-model="formValues.multiValue" multiple>
-      <option value="red">red</option>
-      <option value="blue">blue</option>
-      <option value="green">green</option>
-    </select>
-    <h5>value {{ formValues.multiValue }}</h5>
+<!--    <label>single selection</label>-->
+<!--    <select v-model="formValues.multiValue" multiple>-->
+<!--      <option value="red">red</option>-->
+<!--      <option value="blue">blue</option>-->
+<!--      <option value="green">green</option>-->
+<!--    </select>-->
+<!--    <h5>value {{ formValues.multiValue }}</h5>-->
 
-    <input type="checkbox" v-model="formValues.checked" id="work">
-    <label for="work">work form home?</label><br>
+<!--    <input type="checkbox" v-model="formValues.checked" id="work">-->
+<!--    <label for="work">work form home?</label><br>-->
 
-    <input type="checkbox" v-model="formValues.multipleCheck" value="html" id="html">
-    <label for="html">HTML</label>
-    <input type="checkbox" v-model="formValues.multipleCheck" value="css" id="css">
-    <label for="css">CSS</label>
-    <input type="checkbox" v-model="formValues.multipleCheck" value="jquery" id="jquery">
-    <label for="jquery">JQUERY</label>
+<!--    <input type="checkbox" v-model="formValues.multipleCheck" value="html" id="html">-->
+<!--    <label for="html">HTML</label>-->
+<!--    <input type="checkbox" v-model="formValues.multipleCheck" value="css" id="css">-->
+<!--    <label for="css">CSS</label>-->
+<!--    <input type="checkbox" v-model="formValues.multipleCheck" value="jquery" id="jquery">-->
+<!--    <label for="jquery">JQUERY</label>-->
 
-    <button @click="submit()">submit</button>
+<!--    <button @click="submit()">submit</button>-->
+
+    <h2>Full Name: {{ firstName }} {{ lastName }}</h2>
+    <h3>Computed Full Name: {{ fullName }}</h3>
+
+    <P>Total: {{ items.reduce((total,crnt) => ( total += crnt.price ), 0) }}</P>
+    <button @click="items.push({id: 4, name: 'headphone', price: 50})">Add item</button>
+    <P>Computed Total: {{ total }}</P>
+
+
 
   </div>
 </template>
@@ -82,18 +93,39 @@
 export default {
   name: 'App',
   data() {
-    return{
-      formValues: {
-        text: '',
-        name: 'john',
-        baseMultiply: 5,
-        baseValue: 10,
-        counter: 0,
-        singleValue: '',
-        multiValue: [],
-        checked:false,
-        multipleCheck: []
-      }
+    return {
+      firstName: "AL Zami",
+      lastName: "Arafat",
+      items: [
+          {
+            id: 1,
+            name: "mobile",
+            price: 1000,
+          },
+        {
+            id: 2,
+            name: "tv",
+            price: 500,
+          },
+        {
+            id: 1,
+            name: "laptop",
+            price: 450,
+          }
+      ]
+    }
+      // form control
+      // formValues: {
+      //   text: '',
+      //   name: 'john',
+      //   baseMultiply: 5,
+      //   baseValue: 10,
+      //   counter: 0,
+      //   singleValue: '',
+      //   multiValue: [],
+      //   checked:false,
+      //   multipleCheck: []
+
 
       /*name:'Batman',
       text: '<b>fdsga</b>',
@@ -127,7 +159,7 @@ export default {
       //     comments: ['this is a 1st comment','this is a 2nd comment','this is a 3rd comment']
       //   }
       // ]
-    }
+
   },
   methods: {
     add(a,b,c) {
@@ -144,6 +176,14 @@ export default {
     },
     submit(){
       console.log(this.formValues)
+    }
+  },
+  computed: {
+    fullName() {
+      return `${this.firstName} ${this.lastName}`
+    },
+    total () {
+      return this.items.reduce((total, crrnt) => (total += crrnt.price),0)
     }
   }
 }
