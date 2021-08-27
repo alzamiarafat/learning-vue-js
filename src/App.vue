@@ -38,9 +38,39 @@
 <!--    <button @click="increment()">+</button>-->
 <!--    <button v-on:click="decrement()">-</button>-->
 
-    <input type="number" v-model="text" placeholder="Click Here">
-    <p>Input Here: {{ text+10 }}</p>
+    <h2>{{ formValues }}</h2>
 
+    <input type="number" v-model="formValues.text" placeholder="Click Here">
+    <p>Input Here: {{ formValues.text+10 }}</p>
+
+    <label>single selection</label>
+    <select v-model="formValues.singleValue">
+      <option value="red">red</option>
+      <option value="blue">blue</option>
+      <option value="green">green</option>
+    </select>
+    <h5>value {{ formValues.singleValue }}</h5>
+
+
+    <label>single selection</label>
+    <select v-model="formValues.multiValue" multiple>
+      <option value="red">red</option>
+      <option value="blue">blue</option>
+      <option value="green">green</option>
+    </select>
+    <h5>value {{ formValues.multiValue }}</h5>
+
+    <input type="checkbox" v-model="formValues.checked" id="work">
+    <label for="work">work form home?</label><br>
+
+    <input type="checkbox" v-model="formValues.multipleCheck" value="html" id="html">
+    <label for="html">HTML</label>
+    <input type="checkbox" v-model="formValues.multipleCheck" value="css" id="css">
+    <label for="css">CSS</label>
+    <input type="checkbox" v-model="formValues.multipleCheck" value="jquery" id="jquery">
+    <label for="jquery">JQUERY</label>
+
+    <button @click="submit()">submit</button>
 
   </div>
 </template>
@@ -53,11 +83,18 @@ export default {
   name: 'App',
   data() {
     return{
-      text: '',
-      name: 'john',
-      baseMultiply: 5,
-      baseValue: 10,
-      counter: 0
+      formValues: {
+        text: '',
+        name: 'john',
+        baseMultiply: 5,
+        baseValue: 10,
+        counter: 0,
+        singleValue: '',
+        multiValue: [],
+        checked:false,
+        multipleCheck: []
+      }
+
       /*name:'Batman',
       text: '<b>fdsga</b>',
       textID: 'test_id',
@@ -104,6 +141,9 @@ export default {
     },
     decrement() {
       return this.counter -= 1
+    },
+    submit(){
+      console.log(this.formValues)
     }
   }
 }
