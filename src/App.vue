@@ -82,6 +82,10 @@
     <button @click="items.push({id: 4, name: 'headphone', price: 50})">Add item</button>
     <P>Computed Total: {{ total }}</P>
 
+    <h2>Volume {{ volume }}</h2>
+    <button @click="volume +=1">+</button>
+    <button @click="volume -=1">-</button>
+
 
 
   </div>
@@ -97,6 +101,7 @@ export default {
     return {
       firstName: "AL Zami",
       lastName: "Arafat",
+      volume: 0,
       items: [
           {
             id: 1,
@@ -196,6 +201,14 @@ export default {
     },
     total () {
       return this.items.reduce((total, crrnt) => (total += crrnt.price),0)
+    }
+  },
+  watch: {
+    volume(newValue, oldValue){
+      if (newValue > oldValue && newValue === 16){
+        alert("this is high volume")
+      }
+
     }
   }
 }
