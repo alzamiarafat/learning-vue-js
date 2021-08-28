@@ -1,10 +1,9 @@
-# first_project
-
+# Vue Learning
+#<img src="https://www.fullstackpython.com/img/logos/vuejs-wide.png" width="400">
 ## Project setup
 ```
 npm install
 ```
-
 ### Compiles and hot-reloads for development
 ```
 npm run serve
