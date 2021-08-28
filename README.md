@@ -1,6 +1,6 @@
 # Vue Learning
 #<img src="https://www.fullstackpython.com/img/logos/vuejs-wide.png" width="400">
-## Project setup
+# Project setup
 ```
 npm install
 ```
