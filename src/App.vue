@@ -73,7 +73,7 @@
 
     <!--    <button @click="submit()">submit</button>-->
 
-    <Greet :firstName="firstName" :lastName="lastName" :fullName="fullName"/>
+<!--    <Greet :firstName="firstName" :lastName="lastName" :fullName="fullName"/>
 
     <button @click="changeFullName('Hasib Arafat')">changeFullName</button>
 
@@ -83,9 +83,12 @@
 
     <h2>Volume {{ volume }}</h2>
     <button @click="volume +=1">+</button>
-    <button @click="volume -=1">-</button>
+    <button @click="volume -=1">-</button>-->
 
 
+    <NonProps id="my_id" />
+    <h2>App for username {{ username }}</h2>
+    <ComponentFirst />
 
   </div>
 </template>
@@ -94,15 +97,21 @@
 <script>
 
 /*import methods from "methods";*/
-import Greet from './components/Greet'
+// import Greet from './components/Greet'
+import NonProps from './components/NonProps';
+import ComponentFirst from './components/Component'
 
 export default {
   name: 'App',
-  components: {Greet},
+  components: {
+    NonProps,
+    ComponentFirst
+  },
   data() {
     return {
       firstName: "AL Zami",
       lastName: "Arafat",
+      username: "zamii00",
       volume: 0,
       items: [
           {
@@ -211,6 +220,11 @@ export default {
         alert("this is high volume")
       }
 
+    }
+  },
+  provide() {
+    return {
+      username: this.username
     }
   }
 }
