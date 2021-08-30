@@ -86,9 +86,12 @@
     <button @click="volume -=1">-</button>-->
 
 
-    <NonProps id="my_id" />
-    <h2>App for username {{ username }}</h2>
-    <ComponentFirst />
+<!--    <NonProps id="my_id" />-->
+<!--    <h2>App for username {{ username }}</h2>-->
+<!--    <ComponentFirst />-->
+
+    <button @click="popupShow = true">Show</button>
+    <Popup v-show="popupShow" @close="popupClosed"/>
 
   </div>
 </template>
@@ -98,14 +101,16 @@
 
 /*import methods from "methods";*/
 // import Greet from './components/Greet'
-import NonProps from './components/NonProps';
-import ComponentFirst from './components/Component'
+// import NonProps from './components/NonProps';
+// import ComponentFirst from './components/Component'
+import Popup from './components/Popup'
 
 export default {
   name: 'App',
   components: {
-    NonProps,
-    ComponentFirst
+    // NonProps,
+    // ComponentFirst,
+    Popup
   },
   data() {
     return {
@@ -113,6 +118,7 @@ export default {
       lastName: "Arafat",
       username: "zamii00",
       volume: 0,
+      popupShow: false,
       items: [
           {
             id: 1,
@@ -196,6 +202,10 @@ export default {
     },
     changeFullName(value){
       this.fullName = value
+    },
+    popupClosed(name) {
+      this.popupShow = false;
+      console.log(name)
     }
   },
   computed: {
