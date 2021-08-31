@@ -90,8 +90,11 @@
 <!--    <h2>App for username {{ username }}</h2>-->
 <!--    <ComponentFirst />-->
 
+    <Input v-model="name"/>
     <button @click="popupShow = true">Show</button>
+<!--    <input v-model="name" />-->
     <Popup v-show="popupShow" @close="popupClosed"/>
+    <p>{{ name }}</p>
 
   </div>
 </template>
@@ -104,16 +107,19 @@
 // import NonProps from './components/NonProps';
 // import ComponentFirst from './components/Component'
 import Popup from './components/Popup'
+import Input from './components/Input'
 
 export default {
   name: 'App',
   components: {
     // NonProps,
     // ComponentFirst,
-    Popup
+    Popup,
+    Input
   },
   data() {
     return {
+      name: 'iashdfu',
       firstName: "AL Zami",
       lastName: "Arafat",
       username: "zamii00",
