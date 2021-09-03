@@ -90,11 +90,28 @@
 <!--    <h2>App for username {{ username }}</h2>-->
 <!--    <ComponentFirst />-->
 
-    <Input v-model="name"/>
-    <button @click="popupShow = true">Show</button>
-<!--    <input v-model="name" />-->
-    <Popup v-show="popupShow" @close="popupClosed"/>
-    <p>{{ name }}</p>
+<!--    <Input v-model="name"/>-->
+<!--    <button @click="popupShow = true">Show</button>-->
+<!--&lt;!&ndash;    <input v-model="name" />&ndash;&gt;-->
+<!--    <Popup v-show="popupShow" @close="popupClosed"/>-->
+<!--    <p>{{ name }}</p>-->
+
+    <Card></Card>
+    <Card><h2>This is first content</h2></Card>
+    <Card><p>This is p tag</p></Card>
+    <Card><img src="https://picsum.photos/240"></Card>
+
+    <Card>
+      <template v-slot:header>
+        <h2>Header</h2>
+      </template>
+      <template v-slot:default>
+        <img src="https://picsum.photos/200">
+      </template>
+      <template v-slot:footer>
+        <button>View Details</button>
+      </template>
+    </Card>
 
   </div>
 </template>
@@ -106,16 +123,18 @@
 // import Greet from './components/Greet'
 // import NonProps from './components/NonProps';
 // import ComponentFirst from './components/Component'
-import Popup from './components/Popup'
-import Input from './components/Input'
+// import Popup from './components/Popup'
+// import Input from './components/Input'
+import Card from './components/Card'
 
 export default {
   name: 'App',
   components: {
     // NonProps,
     // ComponentFirst,
-    Popup,
-    Input
+    // Popup,
+    // Input,
+    Card
   },
   data() {
     return {
