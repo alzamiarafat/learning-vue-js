@@ -90,28 +90,50 @@
 <!--    <h2>App for username {{ username }}</h2>-->
 <!--    <ComponentFirst />-->
 
+
+
+
 <!--    <Input v-model="name"/>-->
 <!--    <button @click="popupShow = true">Show</button>-->
 <!--&lt;!&ndash;    <input v-model="name" />&ndash;&gt;-->
 <!--    <Popup v-show="popupShow" @close="popupClosed"/>-->
 <!--    <p>{{ name }}</p>-->
 
-    <Card></Card>
-    <Card><h2>This is first content</h2></Card>
-    <Card><p>This is p tag</p></Card>
-    <Card><img src="https://picsum.photos/240"></Card>
 
-    <Card>
-      <template v-slot:header>
-        <h2>Header</h2>
+
+
+<!--    <Card></Card>-->
+<!--    <Card><h2>This is first content</h2></Card>-->
+<!--    <Card><p>This is p tag</p></Card>-->
+<!--    <Card><img src="https://picsum.photos/240"></Card>-->
+<!--    <Card>-->
+<!--      <template v-slot:header>-->
+<!--        <h2>Header</h2>-->
+<!--      </template>-->
+<!--      <template v-slot:default>-->
+<!--        <img src="https://picsum.photos/200">-->
+<!--      </template>-->
+<!--      <template v-slot:footer>-->
+<!--        <button>View Details</button>-->
+<!--      </template>-->
+<!--    </Card>-->
+
+
+    <NameList>
+      <template v-slot:default="sProps">
+        <h3>{{ sProps.fName}} {{ sProps.lName}}</h3>
       </template>
-      <template v-slot:default>
-        <img src="https://picsum.photos/200">
+    </NameList>
+    <NameList>
+      <template v-slot:default="sProps">
+        <h3>{{ sProps.lName}} {{ sProps.fName}}</h3>
       </template>
-      <template v-slot:footer>
-        <button>View Details</button>
+    </NameList>
+    <NameList>
+      <template v-slot:default="sProps">
+        <h3>{{ sProps.fName}}</h3>
       </template>
-    </Card>
+    </NameList>
 
   </div>
 </template>
@@ -125,7 +147,8 @@
 // import ComponentFirst from './components/Component'
 // import Popup from './components/Popup'
 // import Input from './components/Input'
-import Card from './components/Card'
+// import Card from './components/Card'
+import NameList from './components/NameList'
 
 export default {
   name: 'App',
@@ -134,7 +157,8 @@ export default {
     // ComponentFirst,
     // Popup,
     // Input,
-    Card
+    // Card
+    NameList
   },
   data() {
     return {
