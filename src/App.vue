@@ -134,6 +134,9 @@
         <h3>{{ sProps.fName}}</h3>
       </template>
     </NameList>-->
+
+
+
     <h3>This is app component.</h3>
     <button @click="activeData='TabA'">TabA</button>
     <button  @click="activeData='TabB'">TabB</button>
@@ -141,7 +144,10 @@
 <!--    <TabA v-if="activeData==='TabA'"></TabA>-->
 <!--    <TabB v-if="activeData==='TabB'"></TabB>-->
 <!--    <TabC v-if="activeData==='TabC'"></TabC>-->
-    <component :is="activeData" />
+<!--    <component :is="activeData" />-->
+    <keep-alive>
+      <component :is="activeData" />
+    </keep-alive>
 
   </div>
 </template>
