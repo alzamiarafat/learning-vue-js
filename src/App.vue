@@ -119,7 +119,7 @@
 <!--    </Card>-->
 
 
-    <NameList>
+<!--    <NameList>
       <template v-slot:default="sProps">
         <h3>{{ sProps.fName}} {{ sProps.lName}}</h3>
       </template>
@@ -133,11 +133,19 @@
       <template v-slot:default="sProps">
         <h3>{{ sProps.fName}}</h3>
       </template>
-    </NameList>
+    </NameList>-->
+    <h3>This is app component.</h3>
+    <button @click="activeData='TabA'">TabA</button>
+    <button  @click="activeData='TabB'">TabB</button>
+    <button  @click="activeData='TabC'">TabC</button>
+<!--    <TabA v-if="activeData==='TabA'"></TabA>-->
+<!--    <TabB v-if="activeData==='TabB'"></TabB>-->
+<!--    <TabC v-if="activeData==='TabC'"></TabC>-->
+    <component :is="activeData" />
 
   </div>
 </template>
-<!--    <h2>Add Method {{ add(1,2,3) }}</h2>-->
+
 
 <script>
 
@@ -148,8 +156,10 @@
 // import Popup from './components/Popup'
 // import Input from './components/Input'
 // import Card from './components/Card'
-import NameList from './components/NameList'
-
+// import NameList from './components/NameList'
+import TabA from "./components/TabA";
+import TabB from "./components/TabB";
+import TabC from "./components/TabC";
 export default {
   name: 'App',
   components: {
@@ -158,10 +168,14 @@ export default {
     // Popup,
     // Input,
     // Card
-    NameList
+    // NameList
+    TabA,
+    TabB,
+    TabC
   },
   data() {
     return {
+      activeData: 'TabA',
       name: 'iashdfu',
       firstName: "AL Zami",
       lastName: "Arafat",
